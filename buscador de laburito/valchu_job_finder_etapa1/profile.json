@@ -1,0 +1,175 @@
+{
+  "candidate": {
+    "name": "Valentina Mino",
+    "professional_title": "Junior Web Developer & IT",
+    "career_level": "Junior",
+    "summary": "Junior Web Developer orientada al crecimiento profesional en IT, con conocimientos en desarrollo web, programación, herramientas de desarrollo, networking y fundamentos de ciberseguridad. Interesada en seguir aprendiendo mediante proyectos prácticos y oportunidades profesionales.",
+    "location": "Argentina",
+    "work_preferences": [
+      "Remote",
+      "Hybrid",
+      "On-site"
+    ]
+  },
+
+  "target_roles": [
+    "Junior Web Developer",
+    "Junior Frontend Developer",
+    "Frontend Developer",
+    "Junior IT",
+    "IT Support",
+    "Technical Support",
+    "Help Desk",
+    "Junior QA",
+    "QA Tester",
+    "Junior Cybersecurity",
+    "Cybersecurity Intern",
+    "IT Intern"
+  ],
+
+  "skills": {
+    "web_development": {
+      "HTML": "Fundamentos",
+      "CSS": "Responsive design y estilos",
+      "JavaScript": "En práctica",
+      "React": "En aprendizaje"
+    },
+
+    "programming": {
+      "Python": "En aprendizaje",
+      "SQL": "Fundamentos"
+    },
+
+    "tools": {
+      "Git": "En práctica",
+      "GitHub": "Uso frecuente",
+      "VS Code": "Uso habitual"
+    },
+
+    "it": {
+      "Networking": "Fundamentos",
+      "Linux": "Explorando",
+      "IT fundamentals": "En aprendizaje"
+    },
+
+    "cybersecurity": {
+      "TryHackMe": "Formación práctica",
+      "Cybersecurity fundamentals": "En aprendizaje",
+      "Networking fundamentals": "En aprendizaje"
+    },
+
+    "artificial_intelligence": {
+      "AI tools": "Uso avanzado",
+      "AI-assisted productivity": "En crecimiento"
+    }
+  },
+
+  "languages": [
+    {
+      "language": "Spanish",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "C1",
+      "certified": true,
+      "certification": "EF SET",
+      "certificate_url": "https://cert.efset.org/es/XMTznH"
+    }
+  ],
+
+  "professional_experience": {
+    "customer_service": {
+      "experience": true,
+      "transferable_skills": [
+        "Communication",
+        "Problem solving",
+        "Customer support",
+        "Adaptability",
+        "Working under pressure",
+        "Active listening"
+      ]
+    }
+  },
+
+  "projects": [
+    {
+      "name": "Portfolio Valchu",
+      "type": "Web Development",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "github": "https://github.com/valchuminodevop-cloud/Portfolio-valchu"
+    },
+    {
+      "name": "Monitor de WiFi",
+      "type": "Python / IT / Networking",
+      "technologies": [
+        "Python",
+        "Networking",
+        "IT"
+      ],
+      "github": "https://github.com/valchuminodevop-cloud/monitor-de-wifi-python"
+    },
+    {
+      "name": "Valchu Proyecto",
+      "type": "Web Development",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "github": "https://github.com/valchuminodevop-cloud/valchu-proyecto-10"
+    }
+  ],
+
+  "github": {
+    "username": "valchuminodevop-cloud",
+    "profile_url": "https://github.com/valchuminodevop-cloud"
+  },
+
+  "job_preferences": {
+    "seniority": [
+      "Intern",
+      "Trainee",
+      "Junior",
+      "Entry Level"
+    ],
+
+    "employment_types": [
+      "Full-time",
+      "Part-time",
+      "Internship"
+    ],
+
+    "remote_preferred": true,
+
+    "relocation": false,
+
+    "minimum_match_score": 60
+  },
+
+  "job_filters": {
+    "exclude_seniority": [
+      "Senior",
+      "Staff",
+      "Lead",
+      "Principal",
+      "Manager",
+      "Director"
+    ],
+
+    "minimum_years_experience": 0,
+    "maximum_years_experience": 2
+  },
+
+  "application_strategy": {
+    "automatic_application": false,
+    "require_human_approval": true,
+    "prepare_cover_letter": true,
+    "prepare_resume_match": true,
+    "save_interesting_jobs": true
+  }
+}

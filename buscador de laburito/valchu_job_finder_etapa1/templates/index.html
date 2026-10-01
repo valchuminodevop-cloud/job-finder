@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Valchu Job Finder
+    </title>
+
+    <meta name="description" content="Buscador inteligente de oportunidades laborales">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                V
+            </div>
+
+            <div>
+
+                <h1>
+                    Valchu Job Finder
+                </h1>
+
+                <span>
+                    Buscador inteligente de laburito
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button id="refreshButton" class="refresh-button">
+
+            <span id="refreshIcon">
+                ↻
+            </span>
+
+            Actualizar ofertas
+
+        </button>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    TU PRÓXIMO LABURO
+                </span>
+
+                <h2>
+                    Encontrá ofertas que
+                    <span>realmente encajen</span>
+                    con vos.
+                </h2>
+
+                <p>
+                    Valchu Job Finder analiza las ofertas,
+                    compara tus habilidades y muestra las
+                    oportunidades más compatibles con tu perfil.
+                </p>
+
+            </div>
+
+            <div class="hero-decoration">
+
+                <div class="floating-card">
+
+                    <span>
+                        MATCH
+                    </span>
+
+                    <strong>
+                        87%
+                    </strong>
+
+                    <small>
+                        Alta compatibilidad
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ERROR
+        ================================================== -->
+
+        {% if error %}
+
+        <section class="error-box">
+
+            <div class="error-icon">
+                !
+            </div>
+
+            <div>
+
+                <strong>
+                    Ocurrió un problema
+                </strong>
+
+                <p>
+                    {{ error }}
+                </p>
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+        <!-- =================================================
+             STATS
+        ================================================== -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span class="stat-label">
+                        Compatibles
+                    </span>
+
+                    <strong>
+                        {{ data.total_eligible_jobs }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    ◎
+                </div>
+
+                <div>
+
+                    <span class="stat-label">
+                        Ofertas analizadas
+                    </span>
+
+                    <strong>
+                        {{ data.total_input_jobs }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    %
+                </div>
+
+                <div>
+
+                    <span class="stat-label">
+                        Score mínimo
+                    </span>
+
+                    <strong>
+                        {{ data.minimum_match_score }}%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    ↻
+                </div>
+
+                <div>
+
+                    <span class="stat-label">
+                        Última actualización
+                    </span>
+
+                    <strong id="lastUpdate">
+                        Ahora
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FILTROS
+        ================================================== -->
+
+        <section class="filters-panel">
+
+            <div class="filters-header">
+
+                <div>
+
+                    <h3>
+                        Ofertas encontradas
+                    </h3>
+
+                    <p>
+                        Filtrá las oportunidades según lo que
+                        quieras ver.
+                    </p>
+
+                </div>
+
+                <div id="visibleCount" class="results-count">
+                    {{ data.jobs|length }} ofertas
+                </div>
+
+            </div>
+
+
+            <div class="filters">
+
+
+                <div class="search-box">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input type="text" id="searchInput" placeholder="Buscar puesto, empresa o skill...">
+
+                </div>
+
+
+                <select id="locationFilter">
+
+                    <option value="ALL">
+                        Todas las ubicaciones
+                    </option>
+
+                    <option value="ARGENTINA">
+                        Argentina
+                    </option>
+
+                    <option value="LATAM">
+                        LATAM
+                    </option>
+
+                    <option value="AMERICAS">
+                        Americas
+                    </option>
+
+                    <option value="WORLDWIDE">
+                        Worldwide
+                    </option>
+
+                    <option value="REMOTE">
+                        Remote
+                    </option>
+
+                </select>
+
+
+                <select id="scoreFilter">
+
+                    <option value="0">
+                        Cualquier match
+                    </option>
+
+                    <option value="60">
+                        60% o más
+                    </option>
+
+                    <option value="70">
+                        70% o más
+                    </option>
+
+                    <option value="80">
+                        80% o más
+                    </option>
+
+                    <option value="90">
+                        90% o más
+                    </option>
+
+                </select>
+
+
+                <button id="clearFilters" class="clear-button">
+                    Limpiar
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             JOB GRID
+        ================================================== -->
+
+        <section id="jobsGrid" class="jobs-grid">
+
+
+            {% if data.jobs %}
+
+
+            {% for job in data.jobs %}
+
+            <article class="job-card" data-title="{{ job.title|lower|e }}" data-company="{{ job.company|lower|e }}"
+                data-location="{{ job.location_scope|lower|e }}" data-location-text="{{ job.location|lower|e }}"
+                data-skills="{{ job.matched_skills|join(' ')|lower|e }}" data-score="{{ job.match_score }}">
+
+
+                <!-- CARD HEADER -->
+
+                <div class="job-card-header">
+
+                    <div class="source">
+
+                        <span class="source-dot"></span>
+
+                        {{ job.source }}
+
+                    </div>
+
+
+                    <div class="score-badge
+                            {% if job.match_score >= 80 %}
+                                high
+                            {% elif job.match_score >= 70 %}
+                                medium
+                            {% else %}
+                                low
+                            {% endif %}">
+
+                        {{ job.match_score }}%
+
+                    </div>
+
+                </div>
+
+
+                <!-- JOB TITLE -->
+
+                <div class="job-main">
+
+                    <h3>
+                        {{ job.title }}
+                    </h3>
+
+                    <p class="company">
+                        {{ job.company }}
+                    </p>
+
+                </div>
+
+
+                <!-- META -->
+
+                <div class="job-meta">
+
+                    <span>
+                        📍
+                        {{ job.location }}
+                    </span>
+
+
+                    {% if job.remote %}
+
+                    <span class="remote-pill">
+                        Remote
+                    </span>
+
+                    {% endif %}
+
+
+                    {% if job.employment_type %}
+
+                    <span>
+                        💼
+                        {{ job.employment_type }}
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- SCORE -->
+
+                <div class="match-section">
+
+                    <div class="match-label">
+
+                        <span>
+                            Compatibilidad
+                        </span>
+
+                        <strong>
+                            {{ job.match_score }}%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div class="progress-fill" style="width: {{ job.match_score }}%;"></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SKILLS -->
+
+                {% if job.matched_skills %}
+
+                <div class="skills">
+
+                    {% for skill in job.matched_skills[:6] %}
+
+                    <span class="skill">
+                        {{ skill }}
+                    </span>
+
+                    {% endfor %}
+
+                </div>
+
+                {% endif %}
+
+
+                <!-- FOOTER -->
+
+                <div class="job-footer">
+
+                    <div class="location-tag">
+
+                        {{ job.location_scope }}
+
+                    </div>
+
+
+                    {% if job.url %}
+
+                    <a href="{{ job.url }}" target="_blank" rel="noopener noreferrer" class="job-button">
+
+                        Ver oferta
+
+                        <span>
+                            ↗
+                        </span>
+
+                    </a>
+
+                    {% else %}
+
+                    <span class="no-url">
+                        Sin enlace
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+
+            </article>
+
+            {% endfor %}
+
+
+            {% else %}
+
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Todavía no encontramos ofertas
+                </h3>
+
+                <p>
+                    Revisá tu archivo jobs.json o agregá
+                    nuevas fuentes de búsqueda.
+                </p>
+
+            </div>
+
+
+            {% endif %}
+
+
+        </section>
+
+
+        <!-- =================================================
+             SIN RESULTADOS DE FILTRO
+        ================================================== -->
+
+        <div id="noFilterResults" class="empty-state hidden">
+
+            <div class="empty-icon">
+                🔍
+            </div>
+
+            <h3>
+                No hay ofertas con esos filtros
+            </h3>
+
+            <p>
+                Probá cambiar la búsqueda o ampliar los filtros.
+            </p>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <p>
+            Valchu Job Finder
+            <span>•</span>
+            Tu buscador de laburito
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+
+</body>
+
+</html>

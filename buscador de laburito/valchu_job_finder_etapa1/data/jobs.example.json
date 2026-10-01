@@ -1,0 +1,22 @@
+[
+  {
+    "id": "demo-001",
+    "source": "manual",
+    "title": "Junior Frontend Developer",
+    "company": "Empresa Demo",
+    "location": "Remote - LATAM",
+    "location_scope": "LATAM",
+    "remote": true,
+    "employment_type": "Full-time",
+    "seniority": "junior",
+    "description": "Trabajo con HTML, CSS, JavaScript y Git.",
+    "requirements": "Junior. 0-2 years experience.",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Git"
+    ],
+    "url": "https://example.com/job"
+  }
+]
